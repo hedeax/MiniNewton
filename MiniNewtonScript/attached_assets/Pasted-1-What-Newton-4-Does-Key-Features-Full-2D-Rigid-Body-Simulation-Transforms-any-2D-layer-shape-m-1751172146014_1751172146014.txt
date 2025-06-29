@@ -1,0 +1,133 @@
+1. What Newton 4 Does (Key Features)
+Full 2D Rigid‑Body Simulation
+Transforms any 2D layer (shape, mask, text, pre‑comp) into a “body” with physical properties: density, friction, bounce, restitution, even custom mass and rotational inertia 
+aescripts.com
+.
+
+Global Forces & Material Settings
+Adjustable gravity vector, global air drag (damping), per‑body restitution and friction graphs—so you can simulate everything from sticky goo to super‑bouncy rubber 
+motionboutique.com
+motionboutique.com
+.
+
+Collision & Contacts
+Precise collision detection (convex hull or polygon mesh), contact processing with elasticity, friction, “sleeping” bodies, and wake‑on‑impact behavior 
+motionboutique.com
+.
+
+Seven Joint Types
+Distance, Pivot, Piston, Spring, Wheel (with suspension/motor), Blob (soft‑body grouping), and the new Weld joint. Each joint exposes limits, motors, damping, and can be driven by expressions or UI sliders 
+aescripts.com
+.
+
+Advanced Systems
+
+Buoyancy (waterlike drag & lift)
+
+Magnetism (attraction/repulsion fields)
+
+Triggermatic (events fired on collision enter/exit)
+
+Teleportation (warp bodies instantly)
+All baked to standard AE keyframes so you remain in full AE control 
+aescripts.com
+.
+
+Interactive Samples Browser & Preview
+Built‑in scene browser with dozens of demo rigs, plus an OpenGL preview pane for tweaking before baking 
+motionboutique.com
+.
+
+2. MiniNewton: A Free, Script‑Only Alternative
+2.1. Expanded Phase Breakdown
+Phase	Scope & Deliverables
+1. Core Engine v1	• Gravity, velocity, acceleration, per‑body mass
+• Friction & damping forces
+• Collision with fixed “floor” or any static boundaries
+• Bake position + rotation keyframes
+• UI inputs: gravity vector, global damping, floor Y, duration
+2. Multi‑Body & Collision	• Inter‑object collision detection (polygon‑based)
+• Contact resolution with restitution & friction
+• “Sleeping” optimization (pause static bodies)
+• UI: material presets (rubber, metal, wood)
+3. Joints & Constraints	• Distance, Pivot, Spring, Weld, Piston, Wheel, Blob joints
+• Joint property panels (limits, motors, damping)
+• Expression‑driven joint parameters
+• Batch‑apply joints via layer naming conventions
+4. Advanced Effects	• Buoyancy: simulate liquid regions via mask intersection
+• Magnetism: field emitters and falloff curves
+• Trigger events: run custom ExtendScript snippets on collision
+• Teleport: instant body relocation presets
+5. Preview & Samples Browser	• Canvas preview window (approximate real‑time) using ScriptUI + CEP
+• Built‑in sample scenes loader (JSON‑based)
+• Save/load scene settings to disk
+6. Extensibility & Packaging	• Modular code architecture (ESLint‑style, CommonJS modules)
+• JSON/CSV export of simulation data
+• CLI for offline batch simulations
+• Comprehensive docs & tutorials
+
+2.2. UI & Workflow Enhancements
+Layer‑Inspector Panel
+Show per‑layer physics settings (mass, friction, restitution) alongside After Effects’ standard Transform panel.
+
+Joint‑Builder Wizard
+Guided UI: select two layers → choose joint type → set parameters → preview → apply.
+
+Material Presets
+One‑click sets:
+
+Rubber: high restitution, medium friction
+
+Metal: low restitution, low friction
+
+Wood: medium restitution, high friction
+
+Scene Browser
+
+Thumbnail gallery of JSON‑defined demo scenes
+
+Drag‑and‑drop to import into current comp
+
+Simulation Timeline Overlay
+Visual markers on AE timeline showing contact events, joint limits reached, buoyancy regions crossed.
+
+2.3. Architectural Considerations
+Data Structures
+
+Store simulation state in JavaScript objects/arrays:
+
+js
+Copy
+Edit
+bodies = [{ layer: Layer, mass, vel, pos, shapePoly }, …];
+joints = [{ type, bodyA, bodyB, params }, …];
+Config saved as JSON for import/export.
+
+Performance
+
+Frame‑by‑frame loop must be efficient:
+
+Use typed arrays for physics vectors
+
+Spatial partitioning (grid) for collision culling
+
+“Sleeping” bodies skip collision checks
+
+Modularity
+
+Split engine into: physics.js, joints.js, ui.js, io.js
+
+Expose a top‑level API:
+
+js
+Copy
+Edit
+MiniNewton.init(settings);
+MiniNewton.addBody(layer, props);
+MiniNewton.simulate(frames);
+MiniNewton.bake();
+Compatibility
+
+Target AE 2021+ (ExtendScript ES3)
+
+No C++ or CEP panels—pure ScriptUI

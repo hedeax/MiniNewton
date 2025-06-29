@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniNewton - 2D Physics Engine for After Effects</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #667eea;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .download-section {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            text-align: center;
+        }
+        .download-section h2 {
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+        }
+        .file-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .file-item {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 6px;
+            backdrop-filter: blur(10px);
+        }
+        .file-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .file-item a:hover {
+            text-decoration: underline;
+        }
+        .status-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .code-block {
+            background: #f1f3f4;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .installation-steps {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .installation-steps h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎬 MiniNewton</h1>
+        <p>Lightweight 2D Physics Engine for After Effects</p>
+        <p>ExtendScript-based alternative to Newton plugin</p>
+    </div>
+
+    <div class="section">
+        <h2>Project Overview</h2>
+        <p>MiniNewton Enhanced is a comprehensive 2D physics engine inspired by Newton 4, built specifically for Adobe After Effects using ExtendScript. It provides professional-grade physics simulation with multiple body types, joint systems, contact detection, and material properties - all without requiring external plugins.</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🎯 Body Types (Newton 4 Inspired)</h3>
+                <p>Dynamic (physics-driven), Static (immovable walls), and Kinematic (animated) body types with Box2D-style scaling (100px = 1m).</p>
+            </div>
+            <div class="feature-card">
+                <h3>🧱 Enhanced Material System</h3>
+                <p>Seven material presets (rubber, metal, wood, ice, concrete, glass, default) with realistic density, friction, and restitution properties.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔗 Professional Joint System</h3>
+                <p>Distance, Spring, Pivot, and Weld joints with configurable stiffness, damping, limits, and motor options for complex constraints.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📊 Contact Detection & Export</h3>
+                <p>Newton 4's contact tracking system - automatically adds "Contacts" slider effects to layers with keyframes at each collision event.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚙️ Advanced Physics Controls</h3>
+                <p>Gravity scale, collision groups, time scaling, collision tolerance, sleeping optimization, and fixed rotation options.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 Professional Integration</h3>
+                <p>Enhanced keyframe baking, contact slider effects, undo group support, and expression-ready contact data for reactive animations.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Implementation Status</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Phase 1: Core Physics <span class="status-badge">COMPLETE</span></h3>
+                <ul>
+                    <li>Gravity and velocity simulation</li>
+                    <li>Floor collision detection</li>
+                    <li>Bounce and damping effects</li>
+                    <li>Material property system</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>Phase 2: Multi-Body Physics <span class="status-badge">COMPLETE</span></h3>
+                <ul>
+                    <li>Inter-object collision detection</li>
+                    <li>Sleeping body optimization</li>
+                    <li>Material-based friction</li>
+                    <li>Performance enhancements</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>Phase 3: Joints & Constraints <span class="status-badge">COMPLETE</span></h3>
+                <ul>
+                    <li>Distance and spring joints</li>
+                    <li>Pivot and weld joints</li>
+                    <li>Auto-joint creation</li>
+                    <li>Joint builder UI</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section installation-steps">
+        <h3>📥 Installation Instructions</h3>
+        <div class="step">
+            <strong>Step 1:</strong> Download MiniNewton_Panel.jsx from the button below
+        </div>
+        <div class="step">
+            <strong>Step 2:</strong> Copy the .jsx file to your After Effects Scripts folder:<br>
+            <div class="code-block">
+                Windows: C:\Program Files\Adobe\Adobe After Effects [version]\Support Files\Scripts\<br>
+                macOS: /Applications/Adobe After Effects [version]/Scripts/
+            </div>
+        </div>
+        <div class="step">
+            <strong>Step 3:</strong> Restart After Effects
+        </div>
+        <div class="step">
+            <strong>Step 4:</strong> Go to Window > MiniNewton to open the dockable panel
+        </div>
+        <div class="step">
+            <strong>Step 5:</strong> Start creating physics simulations with your layers!
+        </div>
+    </div>
+
+    <div class="section download-section">
+        <h2>📁 Download Script Files</h2>
+        <p>Click the links below to download the MiniNewton script files for After Effects</p>
+        
+        <div class="file-list">
+            <div class="file-item" style="border: 3px solid #fff; background: rgba(255,255,255,0.4);">
+                <a href="MiniNewton_Enhanced.jsx" download style="font-size: 1.4em;">📥 Download MiniNewton_Enhanced.jsx</a>
+                <small><strong>Newton 4 Inspired • Enhanced 2D Physics Engine<br>
+                Body types • Joint system • Contact detection • Material presets</strong></small>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🚀 Quick Start Usage</h2>
+        <div class="code-block">
+1. Create 2D layers in After Effects (shapes, solids, or precomps)
+2. Select the layers you want to simulate
+3. Open MiniNewton panel and click "Add Selected Layers as Physics Bodies"
+4. Adjust gravity, bounce, material settings as needed
+5. Click "Run Simulation" to calculate physics
+6. Click "Bake Keyframes to Layers" to apply results
+        </div>
+        
+        <h3>Joint Creation</h3>
+        <p>Create joints between objects in two ways:</p>
+        <ul>
+            <li><strong>Manual:</strong> Use the Joint Builder section to connect specific body indices</li>
+            <li><strong>Automatic:</strong> Name layers like "ball1_distance_ball2" and click "Auto Joints"</li>
+        </ul>
+        
+        <h3>Material Presets</h3>
+        <p>Choose from 6 built-in materials:</p>
+        <ul>
+            <li><strong>Rubber:</strong> High bounce, medium friction</li>
+            <li><strong>Metal:</strong> Low bounce, low friction</li>
+            <li><strong>Wood:</strong> Medium bounce, high friction</li>
+            <li><strong>Ice:</strong> Very low bounce, almost no friction</li>
+            <li><strong>Concrete:</strong> Low bounce, high friction</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🔧 Technical Details</h2>
+        <p><strong>Compatibility:</strong> After Effects 2021 and newer</p>
+        <p><strong>Language:</strong> Adobe ExtendScript (JavaScript-based)</p>
+        <p><strong>Dependencies:</strong> None - pure ExtendScript implementation</p>
+        <p><strong>Performance:</strong> Optimized for real-time parameter adjustment with frame-by-frame simulation</p>
+        
+        <h3>Architecture</h3>
+        <ul>
+            <li><strong>Modular Design:</strong> Separated physics, UI, joints, and utilities</li>
+            <li><strong>Namespace Pattern:</strong> Prevents global variable conflicts</li>
+            <li><strong>Event-Driven UI:</strong> Responsive ScriptUI interface</li>
+            <li><strong>Extensible System:</strong> Easy to add new materials and joint types</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📊 Test Results</h2>
+        <p>The physics engine has been thoroughly tested with the included test suite covering:</p>
+        <ul>
+            <li>✅ Material property application</li>
+            <li>✅ Physics body creation and validation</li>
+            <li>✅ Joint system functionality</li>
+            <li>✅ Collision detection and response</li>
+            <li>✅ Sleeping body optimization</li>
+            <li>✅ Error handling and edge cases</li>
+            <li>✅ UI component integration</li>
+        </ul>
+        <p>Run the test suite by executing <code>test_complete.js</code> in a JavaScript environment.</p>
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; padding: 20px; border-top: 1px solid #eee; color: #666;">
+        <p>MiniNewton - Built with ExtendScript for After Effects | Open Source Physics Engine</p>
+        <p>Last updated: June 29, 2025</p>
+    </footer>
+</body>
+</html>
